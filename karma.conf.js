@@ -90,6 +90,9 @@ module.exports = function (config) {
   if (process.env.USE_CLOUD) {
     config.browsers = Object.keys(customLaunchers);
     config.reporters = [ 'dots' ];
+    config.browserDisconnectTimeout = 10000;
+    config.browserDisconnectTolerance = 3;
+    config.browserNoActivityTimeout = 30000;
     config.captureTimeout = 120000;
 
     config.browserStack = {
@@ -101,6 +104,9 @@ module.exports = function (config) {
   } else if (process.env.TRAVIS) {
     config.browsers = Object.keys(customLaunchers);
     config.reporters = [ 'dots' ];
+    config.browserDisconnectTimeout = 10000;
+    config.browserDisconnectTolerance = 3;
+    config.browserNoActivityTimeout = 30000;
     config.captureTimeout = 120000;
 
     var buildLabel = 'TRAVIS #' + process.env.TRAVIS_BUILD_NUMBER + ' (' + process.env.TRAVIS_BUILD_ID + ')';
